@@ -1,0 +1,22 @@
+<html>
+<head>
+<title>resizeBy() & resizeTo()</title>
+</head>
+<body>
+<button onclick="openWindow()"> Oen Window</button>
+<button onclick="closewindow()">Resize Window</button>
+<script>
+var mywindow;
+function openWindow()
+{
+mywindow=window.open("","","width=200px,height=200px,left=30px,top=30px");
+mywindow.document.write("<p>This is mywindow.</p>");
+}
+function closewindow()
+{
+mywindow.resizeBy(400,400);
+}
+</script>
+
+</body>
+</html>

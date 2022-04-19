@@ -1,0 +1,671 @@
+<html>
+<head>
+<title>scrollby & ScrollTo</title>
+</head>
+<body>
+
+<h1>scrollTo & scrollBy</h1>
+<button onclick="scrollWindow()"> Scroll Window</button>
+<div>
+<p style="width:1000px;border:1px solid red;">
+						Data Base : -
+						
+		Data base is a application program which is use to collection of data .				
+						
+						
+Database User :-
+1) End User :-
+				End Users are those users who uses database though application , but dont'n about
+				existance and structure of database.
+				
+2) Programmers :-
+					Programmers are professionals who uses database in application development.
+					
+3)DBA(Database Administrator) :-
+		DBA is stand for database administrator . the DBA is responsibale for creation of database
+		and he/she also provide security in database.
+		
+===================================================================================================
+
+								- :  SQL  : -
+								
+	SQL is stand for structured query language , it is used to perform database operations.
+	Based on database operations SQL is categorized in four parts :-
+	
+	1)DDL(Data Definition Language)
+	2)DML(Data Manipulation Language)
+	3)DCL(Data Control Language)
+	4)TCL(Transaction Control Language)
+	
+	*	Commands of DDL :-
+				
+		1) Create :- The create command is used to create a new database object . 
+
+		2) alter :- The alter command is used to modify database object.
+		
+		3)drop :- The drop command is used to delete  database object.
+		
+		4)truncate:-The truncate command is used to delete all data from database object.
+		
+		5)backup :-The backup command is used to take backup of database.
+		
+		6)restore :-The restore command is used to reconstruct database from its backup.
+		
+		
+	* Commands of DML :-
+
+		1)insert :-The insert command is used to insert data into database object.
+		
+		2)delete:- The delete command is used to delete record from database object .
+		
+		3)update:-The update command is used to modify record in database object.
+		
+		4)select:- The select command is used to select records from database object.
+		
+	* Commands of DCL :-
+
+		1)grant:-The grant command is used to give rights to database user.
+		
+		2)revoke:-The revoke command is just opposit to grant command.thise is used to take
+					off rights from database user.
+		
+		3)rename :-The rename command is used to change the name of database object .
+		
+	* Commands of TCL :-
+
+		1)commit :- commit command is used to save transaction .
+		
+		2)rollback :-rollback command is used to undo the transaction.
+==================================================================================================
+	Open command prompt :- 
+	
+	1)sqlplus / as sysdba; (press enter key )
+	
+	2)use create command to create a new database user : -
+	
+		syntax :- 
+					create user <username> identified by <password>;
+					
+					E.g. 
+						create user appdb2 identified by test;
+					
+	3)Use of grant command to give rights to database user:-
+	
+		syntax :-
+					grant <rights> to <username>;
+					
+					E.g.
+						grant dba to appdb2;
+	
+	4)Connect database user :-
+	
+		syntax :- 
+					connect <username>/<password>;
+					
+					E.g.
+					   connect appdb2/test;
+					   
+					   
+	5)Use of create command to create a new table:-
+	
+	Table :- table is a collection of rows and columans .The columns are called attributes and 
+			rows are called tuples.
+			
+			Syntax :-
+					 create table <tablename>
+					 (
+					 <column_name> <data_type>,
+					 <column_name> <data_type>,
+					 <column_name> <data_type>
+					 );
+					 
+	Primary Key :- Primary Key is a filed in a table , which is used to identify each record
+					uniquely.It is atomic and not null.
+					
+					create table employee
+					(
+						empid number (5) primary key,
+						empname varchar2(30),
+						department varchar2(20),
+						salary number(6)					
+					);
+					
+	6)Command to view table structure :-
+				
+				desc<tablename>;
+			
+			E.g. 
+				 desc employee;
+	
+==================================================================================================
+										- : Insert : -
+	
+	insert command is used to insert record into the database object .
+	
+	Syntax :- 
+			insert into <tablename> values(<value1>,<value2>);
+			
+			E.g.
+			    insert into employee values(1001,'Priya','HR',35000);    
+				insert into employee values(1002,'Rajat','Sales',25000);
+				insert into employee values(1003,'Disha','Management',50000);
+				insert into employee values(1004,'Brijesh','Development',55000);
+				
+	select :- select command is used to view records from database object .
+		
+			select*from employee;
+				
+			select empid , empname, salary from employee;	
+				
+-->	Use of where clause :- Where clause is used to specify condition in sql statement .			
+				
+		E.g.- 1)	select*from employee where empid =   1001;                                                                              	
+			  2)  select empid,empname from employee where empid = 1001;	
+				
+				
+-->	Use of delete command :- delete command is used to delete record from database object .
+
+			Syntax :-
+						delete from <table_name> where <condition>;
+						
+			E.g. :-
+					delete from employee where empid = 1001;
+				
+-->	Use of update command :- Update command is used for modify record of database object.			
+				
+			Syntax : -
+
+						update <tablename> set <columnname>=<value>,
+						<columnname> = <value> where <condition>;
+						
+			E.g. :-
+
+					update employee set salary = 40000 where empid = 1001;
+				
+				
+--> Command to select all table :-
+					select*from tab;
+				
+-->Use of trancate command :- Trancate command is used to delete all data from database object.
+				you can't rollback trancate command.
+				
+			Syntax : -
+						truncate table table_name;
+						
+			E.g. :- 			
+					truncate table employee;	
+						
+--> Drop : - drop command is used to database object.
+
+			Syntax : -
+						drop table <table_name>;
+						
+			E.g. : -
+					drop table employee;
+						
+						
+--> alter : - alter command is used to modify database object.
+
+			create table login 
+			(
+				userid varchar2(20),
+				password varchar2(20)
+			);
+						
+-->1) Use of alter command to modify column :  -
+
+	  Syntax : -
+			alter table <tablename> modify <columnname> <datatype>;	
+
+		E. x. -
+
+			alter table login modify userid varchar2(20) primary key;
+			
+						
+	2) Use of alter command to add a new columan : -
+
+		Syntax : -
+				
+				alter table <tablename> add <columnname> <datatype>;
+				
+		E.g. : -
+				alter table login add usertype varchar2(20);
+				
+						
+	3) Use of alter command to delete a column : -
+
+		Syntax : -
+		
+				alter table <tablename> drop column <columanname>;
+				
+		E.g.
+
+			   alter table login drop column usertype;
+						
+	4) Use of alter command to rename the column : -					
+						
+		Syntax : -
+
+				alter table <tablename> rename column <oldname>to<newname>;
+				
+		E.g. :-
+
+			alter table login rename column password to passwd;
+			
+			
+	5) Use of rename command to rename database object.
+       Syntax :
+				rename <oldname> to <newname>;
+				
+		E,G, :-		
+				rename login to logininfro;		
+						
+================================================================================================
+
+									-:	Join Operation :-
+									
+		If you want to select data from two table then you can perform join operation. For
+			join operation atleast one field must be common inbothe tables.
+			
+=>  Foreign Key : - Foreign key is a field in a table , which works as primary key in another
+					table . There can be more than one foreign key in a table .
+					
+					create table employee 
+					(
+						empid number (5) primary key ,
+						empname varchar2(30)
+					);
+					
+					create table product 
+					(
+						pid number(5)primary key,
+						pname varchar2(20),
+						empid number(5),
+						                                            
+					);
+					
+		-->employee
+
+			empid 						empname
+			1001						 john
+			1002						  Brown
+			1003             			 Green
+			1004						 Lily
+			
+		-->product :-
+
+			pid				pname 				emoid
+			101				Printer 			1001
+			102 			Scanner 			1002 
+			103				Plotter				1002	
+			104 			Leptop 				1003
+			105 			Projector
+			
+			
+		* Now insert records into employee table :-
+			insert into employee values(1001,'John');
+			insert into employee values(1002,'Brown');
+			insert into employee values (1003,'Green');
+			insert into employee values (1004,'Lily');
+			
+		*Now insert records into product table : -	
+			insert into product values (101,'Printer',1001);
+			insert into product values (102, 'Scanner',1002);
+			insert into product values (103, 'Plotter',1002);
+			insert into product values (104,'Laptop',1003);
+			insert into product(pid, pname) values (105,'Projector');
+			
+	select empname from  employee table and pname from product table based on empid : -
+
+		select empname , pname from employee , product where employee.empid=product.empid;
+			
+			
+#  Join Operation : - If you want to select data from two tables , then you perform join operation.
+				for join operation atlest one filed should be common in both tables.
+				
+				select empname , pname from employee , product where employee .empid=product.empid;
+					
+					
+	1)Left join operation : -When you perform left join operation , then all record of left table are
+							displaye and matching recordes of right table aer displayed.
+							
+							
+		select empname , pname from employee left join product on employee.empid=product.empid;		
+					
+	2)Right join operation : - When you perform right join operation then all record of right table
+					are displayed and matching records of lrft table are displayed.
+					
+	
+		select empname , pname from employee right join product on employee.empid = product.empid;
+					
+					
+				create table empinfo 
+					(
+						empid number(5) primary key,
+						empname varchar2(30),
+						department varchar2(20),
+						salary number(6)	
+					);
+					
+					
+		insert into empinfo values(1001,'Ravi Singh','Development',50000);
+		insert into empinfo values(1002,'Priya','Hr',65000);
+		insert into empinfo values(1003,'Ajeet Kumar','Management',80000);
+		insert into empinfo values(1004,'Brijesh Mishar','Development',55000);
+					
+	# Order by :- order by is used to arrange records in sorted order .
+
+
+		select*from empinfo order by empname ;
+	
+	#for decending order :-
+			select*from empinfo order by empname desc;
+			
+			
+	# SQL Operaters : -
+
+		>			greator then
+		<			less then
+		>=			greator than or equal to
+		<=			less then or equal to
+		=			equal to
+		<>			not equal to
+		like 		like operator is used for pattern matchinga
+		in			in operator check value in given values 
+		between		check value in given range       
+		
+	1)	select the record with empid 1001.
+		 select * from empinfo where empid =1001;
+			
+	2)  select those records which have salary more then 50000.
+			select*from empinfo where salary>50000;
+			
+	3)  select those record whith last name 'singh'.
+			select*from empinfo where empname like '%Singh';
+			
+	4)  select those records which names start whith 'A'.
+		select*from empinfo where empname like'A%';
+================================================================================================
+							- : SQL :-
+	
+	1)  sum():- sum function is usd to find sum of values of given column.
+
+		select sum(salary) from empinfo;
+			
+		select sum(salary) "Total Sales" from empinfo;	
+			
+	2)  max():- The max() function find the maximum value of given column .
+
+		select max(salary)"Maximum Salary" from empinfo;
+			
+	3) 	min(): -The min function find the minimum value of given column.
+
+		select min (salary)"Minimum Salary" from empinfo;
+			
+	4) avg():- The avg ()function find the average value of given column.
+
+		select avg(salary)"Average Salary"from empinfo;
+			
+	5) count():-The count()	Function is used to count no. of rows in a table.
+
+		select count(*)"No. of rows"from empinfo;
+		
+	*	Nested Query :- If we use a query inside another query , then it is called nested query .
+
+			select *from empinfo where salary =(select max (salary)from empinfo);
+			
+	#View :- View is logical table which is created by another table.
+
+					If you have a table with some important fields and some unimportant fields.
+					So you can create a view of unimportant fields and assing that view to an
+					operater . When operator insert records in view then main table will also affected.
+					
+    Exercise on view :-
+
+				create table empinfo
+				(
+					empid number(5) primary key,
+					empname varchar2(30),
+					department varchar2(20),
+					salary number(6)
+				);
+				
+				
+	*Now create a view with three fields empid, empname and department .	
+ 
+		create view emp as select empid , empname , department from empinfo;
+
+	*insert employee data .
+		
+		insert into emp values(1001 ,'Brijesh Mishar','Development');
+		insert into emp values (1002,'Shikha Mishar','HR');
+		insert into emp values(1003,'Rajat Singh','Management');
+
+	#Check Constraint : -
+		
+		Chek constraint is used for validation in database object . 
+							
+		*create a table : 
+		
+			create table spiemp
+			(
+				empid varchar2(10) check(empid like 'SPI%'),
+				empname varchar2(30) check (empname=upper(empname)),
+				country varchar2(5)check (country in ('India','Nepal')),
+				salary number(6)check (salary<=100000),
+				primary key (empid)
+			);
+ 
+		*insert  
+		
+			insert into spiemp values ('SPI1001','BRIJESH','India','50000');
+			insert into spiemp values ('SPI1002','ROHIT','Nepal','50000');
+			insert into spiemp values ('SPI1003','PRIYA','India','45000');
+
+# Composit Key :- 
+					If you make primary key by combining two more columns , then resultant key   is called composit key or candidate key .
+Table Name :- shipment
+
+s#  		p#			qty
+s1			p1(nut)		500
+s1			p2(bolt)	700
+s1			p3(abc)		400
+s2			p2(bolt)	700
+s3			p3(abc)		100
+					
+create table shipment
+(
+s# varchar2(5),
+p# varchar2(5),
+qty number(5),
+primary key(s#,p#)
+);		
+
+*How to create table from given table ?
+	
+	create table empinfo2 as select empid , empname , salary from empinfo;
+
+===============================================================================================
+							- :PL /SQL :-
+							
+	PL/SQL is stand for procedural language / structured query language .Developed by Oracle 
+	corporation in 1980 .It is portable , high performance, transaction processing language. 
+	It is os independent .
+	
+    Syntax of PL/SQL Code :-
+			
+			declare 
+			/*in this section we declare variables*/
+			begin 
+			/*Here you write programming and sql statements*/
+			end;
+			/
+			
+			Ex 1:-
+			begin
+			dbms_output.put_line('Hello World');
+			end;
+			/
+
+			output vijit:-set serveroutput on;
+			
+			Ex 2:- /*Simple Calculater */
+					declare
+					a int;
+					b int;
+					begin 
+					a:=&a;
+					b:=&b;
+					dbms_output.put_line('Summation = '||(a+b));
+					dbms_output.put_line('Subtraction ='||(a-b));
+					dbms_output.put_line('Multiplicatio='||(a*b));                                                                   
+					dbms_output.put_line('Division ='||(a/b));
+					end;
+					/	
+
+	if statement:- 
+					if condition then 
+					/*code of if*/
+					end if;
+					
+			
+   if-else statement:-
+				if condition then
+				/*code of if */
+				else
+				/* code of else */
+				end if;
+				
+  ladder if - else :-
+				if condition1 then
+				/*code1*/
+				elsif condition2 then
+				/* code2*/
+				else
+				/* code3*/
+				end if;
+				
+				Ex 1):-
+				/*write a PL/SQL code check given number is even or odd*/
+				declare
+				a int;
+				begin
+				a:=&a;
+				if a mod 2=0 then
+				dbms_output.put_line('Even');
+				else
+				dbms_output.put_line('Odd');
+				end if;
+				end;
+				/
+
+-----------------------------------------------------------------------------------------------
+						- : Loop Control :-
+						
+	If you have a block of code which you want to execute repeatedly upto given consition is true then you can use loop control .
+		In PL/SQL there are three types of loop controls :-
+		1.Basic Loop
+		2.While Loop
+		3.For Loop
+		
+	1)   Syntax of Basic Loop :-
+		loop
+		/*code*/
+		end loop;
+		
+		Ex 2)/*Write a PL/SQL code to print numbers 1-5 using basic loop*/
+		declare
+		a int;
+		begin
+		a:=1;
+		loop
+		dbms_output.put_line(a);
+		a:=a+1;
+		exit when a>5;
+		end loop;
+		end;
+		/
+		
+		
+	2)   While Loop in pl/sql :- while loop is work like entry control .In while loop first 
+				condition is tested then code will executed .
+				
+				Syntax : -
+							while(condition)
+							loop
+							/*code*/
+							end loop;
+							
+		Ex 3) /*Write a pl/sql code to print table of given number*/
+				declare
+				n int;
+				i int;
+				begin 
+				n:=&n;
+				i:=1;
+				while(i<=10) 
+				loop
+				dbms_output.put_line(n*i);
+				i:=i+1;
+				end loop;
+				end;
+				/
+	2) For Loop :- "For Loop" statement is best suitable when you want to execute a code for a know number of times rsther than based on some other conditions.
+	
+		Syntax of for loop :-
+				for <loop_variable > in <lower_limit>..<upper_limit> loop
+				/*code*/
+				end loop;
+				
+				Ex 4)/*Write a PL/SQL code to print numbers from 1-10*/
+						begin
+						for i in 1..10 
+						loop
+						dbms_output.put_line(i);
+						end loop;
+						end;
+						/
+
+-------------------------------------------------------------------------------------------
+Task 
+
+		create table accountes
+		(
+		account_id varchar2(10)check (account_id like'Ac%'),
+		name varchar2(20),
+		balance number(6),
+		primary key(account_id)
+		);
+		
+	insert into accountes values('&account_id','&name',&balance);
+	
+	
+	
+	declare
+	acno varchar2(10);
+	bal int;
+	begin
+	acno:='&acno';
+	select balance into bal from accountes where account_id=acno;
+	bal:=bal-2000;
+	if bal>=500 then 
+	update accountes set balance=bal where account_id=acno;
+	commit;
+	dbms_output.put_line('Amount is debited');
+	else
+	dbms_output.put_line('Insufficient balance');
+	end if;
+	end;						
+	/
+	</div>
+	<button onclick="scrollWindow()" style="position:fixed;left:50px;bottom:50px;background:red;clor:white;">Scroll Window</button>
+</p>
+<script>
+function scrollWindow()
+{
+ window.scrollBy(0,50);//uper jayega
+						//scrollTo niche jayega 
+}
+</script>
+</body>
+</html>

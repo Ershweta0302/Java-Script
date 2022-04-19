@@ -1,0 +1,42 @@
+<html>
+<head>
+<script>
+function butt()
+{
+//alert("hello");
+var tb=document.getElementById("tb").value;
+//alert("he");
+if(tb=="")
+{
+document.getElementById("sp").innerHTML="Invelid";
+document.getElementById("sp").style="color:red";
+document.getElementById("tb").style.border="2px solid red";
+document.getElementById("sp1").innerHTML="Invelid";
+document.getElementById("sp1").style="color:red";
+document.getElementById("tb1").style.border="2px solid red";
+}
+else
+{
+document.getElementById("sp").innerHTML="";
+document.getElementById("tb").styel.border="";
+document.getElementById("sp1").innerHTML="";
+document.getElementById("tb1").styel.border="";
+}
+}
+
+</script>
+</head>
+<body>
+
+
+Enter Name 
+<input type="text" id="tb" />
+<span style="color=red" id="sp"></span>
+<br/>
+Enter Father Name
+<input type="text" id="tb1"/>
+<span style="color=red" id="sp1"></span>
+<br/>
+<input type="button" value="check" onclick="butt()"/>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!--Calculater radio button-->
+
+<html>
+<head>
+<script>
+function add(){
+
+	//alert("good morning");
+	var f =document.getElementById("f").value;
+	//alert("hii");
+	var s=document.getElementById("s").value;
+	//alert("hello");
+	var sum= parseInt(f)+parseInt(s);
+	alert("Sum="+sum);
+	}
+function sub()
+{
+ //alert("hi");
+ var f =document.getElementById("f").value;
+ var s=document.getElementById("s").value;
+ var sub=f-s;
+ alert("SUB =" +sub);
+}
+function mul()
+{
+ var f =document.getElementById("f").value;
+ var s=document.getElementById("s").value;
+ var mul=f*s;
+ alert("MUl = " +mul);
+}
+function div()
+{
+ var f =document.getElementById("f").value;
+ var s=document.getElementById("s").value;
+ var div=f/s;
+ alert("Div = " +div);
+}	
+</script>
+</head>
+<body>
+Enter First No.
+<input type="text" id="f"/>
+<br/>
+Enter Second No.
+<input type="text" id="s"/>
+<br/>
+Add
+<input type="radio" name="a" id="rad" onclick="add()"/>
+Sub
+<input type="radio" name="a" id="rad" onclick="sub()"/>
+Mul
+<input type="radio" name="a" id="rad" onclick="mul()"/>
+Div
+<input type="radio" name="a" id="rad" onclick="div()"/>
+</body>
+</html>

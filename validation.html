@@ -1,0 +1,58 @@
+<html>
+<head>
+<title>validation</title>
+<script>
+function ch()
+{
+//alert("hii");
+var name=document.getElementById("tb").value;
+var fname=document.getElementById("fn").value;
+var mob=document.getElementById("mob").value;
+if(name=="")
+{
+document.getElementById("sp").innerHTML="Invalid Name";
+document.getElementById("tb").style.border="2px solid red";
+//alert("hello");
+}
+else if (fname=="")
+{
+//alert("hii");
+document.getElementById("sp1").innerHTML="Invalid Name";
+document.getElementById("fn").style.border="2px solid green";
+}
+else if(mob=="")
+{
+//alert("Invalid");
+document.getElementById("sp2").innerHTML="Invalid Number";
+document.getElementById("mob").style.border="2px solid red";
+}
+else
+{
+document.getElementById("sp").innerHTML="Valid Name";
+document.getElementById("tb").style.border="";
+//alert("h");
+document.getElementById("sp1").innerHTML="Valid Name";
+document.getElementById("fn").style.border="";
+//alert("hii");
+document.getElementById("sp2").innerHTML="Valid Name";
+document.getElementById("mob").style.border="";
+}
+
+}
+</script>
+<body>
+Enter Your Name
+<input type="text" id="tb"/>
+<span id="sp" style="color:red"></span>
+<br/><br/>
+Enter Your Father Name
+<input type="text" id="fn"/>
+<span id="sp1" style="color:red"></span>
+<br/><br/>
+Enter Your Mobile
+<input type="text" id="mob"/>
+<span id="sp2" style="color:red"></span>
+<br/><br/>
+<input type="button" value="check" onclick="ch()"/>
+</body>
+</html>

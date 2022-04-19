@@ -1,0 +1,31 @@
+<!--confirm box-->
+<html>
+<head>
+<script>
+function swap()
+{
+//alert("h");
+var status =window.confirm("Are You Want to Swap this sentence");
+//atert(status);
+if(status==true)
+{
+var t1=document.getElementById("a").innerHTML;
+//alert("h1");
+var t2=document.getElementById("b").innerHTML;
+//alert("Hiii");
+document.getElementById("a").innerHTML=t2;
+document.getElementById("b").innerHTML=t1;
+}
+else
+{
+alert("Apne Cancle kiya hai ");
+}
+}
+</script>
+</head>
+<body>
+<h1 id="a">Rohit kumar</h1>
+<h1 id="b">Softpro India</h1>
+<input type="button" value="Click me for SWAP" onclick="swap()"/>
+</body>
+</html>
